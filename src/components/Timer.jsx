@@ -106,11 +106,10 @@ export default function Timer() {
 
   return (
     <div className="flex flex-1 flex-col">
-      {/* Hero display */}
-      <section className="mb-6 rounded-2xl bg-[var(--chip-bg)] px-4 py-8 ring-1 ring-[var(--chip-ring)] sm:mb-8 sm:px-6 sm:py-10">
+      <section className="mb-6 rounded-2xl bg-[var(--chip-bg)] px-4 py-8 ring-1 ring-[var(--chip-ring)] sm:px-6 sm:py-10">
         {completed ? (
           <div className="animate-celebrate flex flex-col items-center gap-3 py-2">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/20 text-2xl ring-2 ring-emerald-400/40">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/20 text-2xl ring-2 ring-emerald-400/40 sm:h-16 sm:w-16 sm:text-3xl">
               ✓
             </div>
             <p className="text-lg font-semibold text-emerald-600 dark:text-emerald-300">
@@ -122,7 +121,7 @@ export default function Timer() {
           <>
             <div className="relative">
               {isRunning && (
-                <span className="absolute right-0 top-0 flex items-center gap-1.5 rounded-full bg-cyan-500/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-cyan-700 ring-1 ring-cyan-500/30 dark:text-cyan-300">
+                <span className="absolute right-0 top-0 flex items-center gap-1.5 rounded-full bg-cyan-500/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-cyan-700 ring-1 ring-cyan-500/30 dark:text-cyan-300">
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-500 dark:bg-cyan-400" />
                   Live
                 </span>
@@ -153,10 +152,9 @@ export default function Timer() {
         )}
       </section>
 
-      {/* Presets */}
       {!isRunning && time === 0 && !completed && (
-        <div className="mb-5">
-          <p className="mb-2.5 text-center text-[10px] font-semibold uppercase tracking-widest text-[var(--text-muted)]">
+        <div className="mb-5 sm:mb-6">
+          <p className="mb-2.5 text-center text-[10px] font-semibold uppercase tracking-widest text-[var(--text-muted)] sm:text-xs">
             Quick start
           </p>
           <div className="flex flex-wrap justify-center gap-2">
@@ -179,10 +177,9 @@ export default function Timer() {
         </div>
       )}
 
-      {/* Compact time picker */}
       {!completed && (
         <div className="mb-6 flex flex-col items-center gap-3">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-[var(--text-muted)]">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-[var(--text-muted)] sm:text-xs">
             Custom duration
           </p>
           <div className="flex items-center gap-2 sm:gap-3">
@@ -193,7 +190,9 @@ export default function Timer() {
             ].map(({ label, value, set }, i) => (
               <div key={label} className="flex items-center gap-2 sm:gap-3">
                 {i > 0 && (
-                  <span className="font-mono text-xl text-[var(--digit-separator)]">:</span>
+                  <span className="font-mono text-xl text-[var(--digit-separator)] sm:text-2xl">
+                    :
+                  </span>
                 )}
                 <div className="flex flex-col items-center gap-1">
                   <input
@@ -203,7 +202,9 @@ export default function Timer() {
                     value={value}
                     onChange={(e) => set(e.target.value)}
                     disabled={inputsLocked}
-                    aria-label={label === "h" ? "Hours" : label === "m" ? "Minutes" : "Seconds"}
+                    aria-label={
+                      label === "h" ? "Hours" : label === "m" ? "Minutes" : "Seconds"
+                    }
                     className={inputClass}
                   />
                   <span className="text-[10px] font-medium uppercase text-[var(--text-muted)]">
@@ -216,7 +217,6 @@ export default function Timer() {
         </div>
       )}
 
-      {/* Controls — same row layout as stopwatch */}
       <div className="mt-auto flex flex-wrap justify-center gap-2 sm:gap-3">
         {completed ? (
           <Button

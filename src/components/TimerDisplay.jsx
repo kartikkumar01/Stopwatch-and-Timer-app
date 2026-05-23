@@ -25,21 +25,21 @@ export default function TimerDisplay({ timeMs, running = false }) {
       <div className="flex items-baseline justify-center gap-1 sm:gap-1.5">
         {showHours && (
           <>
-            <span className="font-mono text-5xl font-semibold tabular-nums tracking-tight text-[var(--digit-primary)] sm:text-6xl md:text-7xl">
+            <span className="font-mono text-5xl font-semibold tabular-nums tracking-tight text-[var(--digit-primary)] sm:text-6xl">
               {hr}
             </span>
-            <span className={`${colonClass} text-4xl sm:text-5xl md:text-6xl`}>:</span>
+            <span className={`${colonClass} text-4xl sm:text-5xl`}>:</span>
           </>
         )}
-        <span className="font-mono text-5xl font-semibold tabular-nums tracking-tight text-[var(--digit-primary)] sm:text-6xl md:text-7xl">
+        <span className="font-mono text-5xl font-semibold tabular-nums tracking-tight text-[var(--digit-primary)] sm:text-6xl">
           {min}
         </span>
-        <span className={`${colonClass} text-4xl sm:text-5xl md:text-6xl`}>:</span>
-        <span className="font-mono text-5xl font-semibold tabular-nums tracking-tight text-[var(--digit-primary)] sm:text-6xl md:text-7xl">
+        <span className={`${colonClass} text-4xl sm:text-5xl`}>:</span>
+        <span className="font-mono text-5xl font-semibold tabular-nums tracking-tight text-[var(--digit-primary)] sm:text-6xl">
           {sec}
         </span>
         <span className={`${colonClass} mx-0.5 text-3xl sm:text-4xl`}>.</span>
-        <span className="font-mono text-4xl font-semibold tabular-nums text-cyan-600 dark:text-cyan-400 sm:text-5xl md:text-6xl">
+        <span className="font-mono text-4xl font-semibold tabular-nums text-cyan-600 dark:text-cyan-400 sm:text-5xl">
           {cs}
         </span>
       </div>

@@ -66,7 +66,6 @@ export default function Stopwatch() {
 
   return (
     <div className="flex flex-1 flex-col">
-      {/* Display */}
       <div className="relative mb-6 flex w-full flex-col items-center sm:mb-8">
         <TimeDisplay
           hours={pad(hours)}
@@ -84,41 +83,37 @@ export default function Stopwatch() {
         )}
       </div>
 
-      {/* Controls */}
-      <div className="mb-5 grid grid-cols-2 gap-2 sm:mb-6 sm:flex sm:flex-wrap sm:justify-center sm:gap-3">
+      <div className="mb-5 flex flex-wrap justify-center gap-2 sm:mb-6 sm:gap-3">
         <Button
           name="Reset"
           onClick={stopStopwatch}
           variant="danger"
           disabled={time === 0 && laps.length === 0}
-          className="w-full"
         />
         <Button
           name="Pause"
           onClick={pauseStopwatch}
           variant="secondary"
           disabled={!isRunning}
-          className="w-full"
         />
         <Button
           name={time > 0 && !isRunning ? "Resume" : "Start"}
           onClick={startStopwatch}
           variant="primary"
           size="lg"
-          className="col-span-2 w-full !bg-violet-500 !shadow-violet-500/30 hover:!bg-violet-400 hover:!shadow-violet-400/40 sm:col-span-1 sm:min-w-[100px]"
+          className="min-w-[100px] !bg-violet-500 !shadow-violet-500/30 hover:!bg-violet-400 hover:!shadow-violet-400/40"
         />
         <Button
           name="Lap"
           onClick={addLap}
           variant="accent"
-          className="col-span-2 w-full !text-violet-700 !ring-violet-500/25 hover:!bg-violet-500/15 dark:!text-violet-300 dark:!ring-violet-500/30 dark:hover:!bg-violet-500/20 sm:col-span-1"
+          className="!text-violet-700 !ring-violet-500/25 hover:!bg-violet-500/15 dark:!text-violet-300 dark:!ring-violet-500/30 dark:hover:!bg-violet-500/20"
           disabled={!isRunning && time === 0}
         />
       </div>
 
-      {/* Laps */}
       {laps.length > 0 && (
-        <div className="mt-auto min-h-0 animate-fade-up">
+        <div className="mt-auto animate-fade-up">
           <div className="mb-2 flex items-center justify-between sm:mb-3">
             <h3 className="text-[10px] font-semibold uppercase tracking-wider text-[var(--text-muted)] sm:text-xs">
               Laps
@@ -127,7 +122,7 @@ export default function Stopwatch() {
               {laps.length}
             </span>
           </div>
-          <ul className="lap-scroll max-h-36 space-y-1.5 overflow-y-auto pr-1 sm:max-h-48 sm:space-y-2 md:max-h-56">
+          <ul className="lap-scroll max-h-36 space-y-1.5 overflow-y-auto pr-1 sm:max-h-48 sm:space-y-2">
             {[...laps].reverse().map((lap, revIndex) => {
               const index = laps.length - 1 - revIndex;
               const delta = lapDeltas[index];
@@ -171,12 +166,6 @@ export default function Stopwatch() {
             })}
           </ul>
         </div>
-      )}
-
-      {laps.length === 0 && time === 0 && (
-        <p className="mt-auto text-center text-xs text-[var(--text-faint)] animate-float sm:text-sm">
-          Hit Start, then Lap to split your run
-        </p>
       )}
     </div>
   );
