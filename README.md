@@ -20,7 +20,3 @@ If you are developing a production application, we recommend using TypeScript wi
 2. Package manager - npm / npx
 3. Runtime - Node
 4. Frontend framework - React, React-DOM, TailwindCSS
-5. State management if needed - Context API
-6. Routing - TanStack Router
-7. API client if needed - Fetch
-8. Memory - LocalStorage
